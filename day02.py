@@ -2,15 +2,15 @@ def read_data(input_file: str) -> list[str]:
     with open(input_file) as IN:
         return IN.read().split("\n")
 
-def convert(strategi_list: list[str], RPS) -> list[int]:
+def convert(strategy_list: list[str], RPS) -> list[int]:
     templist = []
-    for x in strategi_list:
+    for x in strategy_list:
         templist.append(RPS.get(x))
     return templist
 
-def task(strategi_score: list[int]) -> int:
-    print(sum(strategi_score))
-    return sum(strategi_score)
+def task(strategy_score: list[int]) -> int:
+    print(sum(strategy_score))
+    return sum(strategy_score)
 
 if __name__ == "__main__":
     
@@ -38,12 +38,12 @@ if __name__ == "__main__":
         "C Z": 7,
     }
     
-    strategi_list = read_data("input02.txt")
+    strategy_list = read_data("input02.txt")
     
-    strategi_score = convert(strategi_list, RPS1)
+    strategy_score = convert(strategy_list, RPS1)
     
-    task(strategi_score)
+    task(strategy_score) #11386
     
-    strategi_score = convert(strategi_list, RPS2)
+    strategy_score2 = convert(strategy_list, RPS2)
     
-    task(strategi_score)
+    task(strategy_score2) #13600

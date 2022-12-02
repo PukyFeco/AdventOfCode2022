@@ -31,6 +31,6 @@ if __name__ == "__main__":
     
     sorted_calorie_list = sort_calorie(calorie_list)
     
-    task1(sorted_calorie_list)
+    task1(sorted_calorie_list) #70509
     
-    task2(sorted_calorie_list, 3)
+    task2(sorted_calorie_list, 3) #208567
