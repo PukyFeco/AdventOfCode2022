@@ -48,4 +48,4 @@ if __name__ == "__main__":
     print(task1_result) #7568
     
     task2_result = task2(sacks)  
-    print(task2_result) #  
+    print(task2_result) #2780
