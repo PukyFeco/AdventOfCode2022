@@ -2,35 +2,27 @@ import string
 
 def read_data(input_file: str) -> list[str]:
     with open(input_file) as file:
-        return file.read().split("\n")
+        return file.read().splitlines()
 
 
 def convert(sections: list[list[int]]) -> list[int]:
-    a = [x.split(",") for x in sections]
-    b = [[y[0].split("-"), y[1].split("-")] for y in a]    
+    section_lists = [line.split(",") for line in sections]
+    b = [[list(map(int, section.split("-"))) for section in section_list] for section_list in section_lists]
     return b
 
 
 def task1(converted_sections: list[int]) -> int:
     result = 0
-    for x in range(len(converted_sections)):
-        sec1star = int(converted_sections[x][0][0])
-        sec1end = int(converted_sections[x][0][1])
-        sec2star = int(converted_sections[x][1][0])
-        sec2end = int(converted_sections[x][1][1])
-        if ((sec1star >= sec2star) & (sec1end <= sec2end)) | ((sec1star <= sec2star) & (sec1end >= sec2end)):
+    for ((sec1star, sec1end), (sec2star, sec2end)) in converted_sections:
+        if ((sec1star >= sec2star) and (sec1end <= sec2end)) or ((sec1star <= sec2star) and (sec1end >= sec2end)):
             result += 1
     return result
             
 
 def task2(converted_sections: list[int]) -> int:
     result = 0
-    for x in range(len(converted_sections)):
-        sec1star = int(converted_sections[x][0][0])
-        sec1end = int(converted_sections[x][0][1])
-        sec2star = int(converted_sections[x][1][0])
-        sec2end = int(converted_sections[x][1][1])
-        if (((sec1star <= sec2star) | (sec1end <= sec2end)) & (sec2star <= sec1end)) | (((sec2end <= sec1end) | (sec2star <= sec1star)) & (sec1star <= sec2end)):
+    for ((sec1star, sec1end), (sec2star, sec2end))  in converted_sections:
+        if ((sec1end >= sec2star) and (sec1star <= sec2end)):
             result += 1
     return result
 
